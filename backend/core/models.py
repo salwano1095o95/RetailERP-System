@@ -23,6 +23,54 @@ class Category(models.Model):
         return self.name
 
 
+class Supplier(models.Model):
+    """
+    نموذج المورد
+    """
+    name = models.CharField(max_length=200, verbose_name="اسم المورد")
+    phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="رقم الهاتف")
+    balance = models.DecimalField(
+        max_digits=12, 
+        decimal_places=2, 
+        default=0.00, 
+        verbose_name="الرصيد"
+    )
+    address = models.TextField(blank=True, null=True, verbose_name="العنوان")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاريخ الإنشاء")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="تاريخ التحديث")
+
+    class Meta:
+        verbose_name = "مورد"
+        verbose_name_plural = "الموردين"
+
+    def __str__(self):
+        return self.name
+
+
+class Customer(models.Model):
+    """
+    نموذج العميل
+    """
+    name = models.CharField(max_length=200, verbose_name="اسم العميل")
+    phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="رقم الهاتف")
+    debt = models.DecimalField(
+        max_digits=12, 
+        decimal_places=2, 
+        default=0.00, 
+        verbose_name="الدين"
+    )
+    address = models.TextField(blank=True, null=True, verbose_name="العنوان")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاريخ الإنشاء")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="تاريخ التحديث")
+
+    class Meta:
+        verbose_name = "عميل"
+        verbose_name_plural = "العملاء"
+
+    def __str__(self):
+        return self.name
+
+
 # =============================================================================
 # نموذج المنتج (Product)
 # =============================================================================
